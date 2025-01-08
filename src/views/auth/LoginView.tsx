@@ -77,7 +77,7 @@ export default function LoginView() {
 
         <input
           type="submit"
-          value="Log In"
+          value="LogIn"
           className="bg-fuchsia-500 hover:bg-fuchsia-700 w-full p-3  text-white font-black  text-xl cursor-pointer"
         />
       </form>
