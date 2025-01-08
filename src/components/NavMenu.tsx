@@ -40,11 +40,6 @@ export default function NavMenu({name}: NavMenuProps) {
               to='/profile'
               className='block p-2 hover:text-purple-950'
             >My Profile</Link>
-            <Link
-              to='/'
-              hidden={true}
-              className='block p-2 hover:text-purple-950'
-            >My Projects</Link>
             <button
               className='block p-2 hover:text-purple-950'
               type='button'
