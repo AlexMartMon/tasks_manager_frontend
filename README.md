@@ -1,3 +1,7 @@
+To test on Production this project you can use this trial user:
+correo@correo.com
+alexyuki
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
