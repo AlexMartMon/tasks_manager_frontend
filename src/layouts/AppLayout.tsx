@@ -6,39 +6,46 @@ import { Link, Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function AppLayout() {
+  const { data, isError, isLoading } = useAuth();
 
-  const {data, isError, isLoading} = useAuth()
-
-  if (isLoading) return 'Loading...'
-  if (isError && !data)   return <Navigate to={'/auth/login'} />
-
-  if (data) return (
-    <>
-      <header className="bg-gray-800 py-5">
-        <div className="max-w-screen-2xl mx-auto flex flex-col lg:flex-row justify-between items-center">
-          <div className="w-64">
-            <Link to={"/"}>
-              <Logo />
-            </Link>
+  if (isLoading)
+    return (
+      <>
+        <div className="bg-gray-800 w-screen h-screen">
+          <div className="flex items-center justify-center h-screen">
+            <Logo />
           </div>
-
-          <NavMenu
-            name={data.name}
-          />
         </div>
-      </header>
+      </>
+    );
+  if (isError && !data) return <Navigate to={"/auth/login"} />;
 
-      <section className="max-w-screen-2xl mx-auto mt-10 p-5">
-        <Outlet />
-      </section>
+  if (data)
+    return (
+      <>
+        <header className="bg-gray-800 py-5">
+          <div className="max-w-screen-2xl mx-auto flex flex-col lg:flex-row justify-between items-center">
+            <div className="w-64">
+              <Link to={"/"}>
+                <Logo />
+              </Link>
+            </div>
 
-      <footer className="py-5">
-        <p className="text-center">
-          All rights reserved {new Date().getFullYear()}
-        </p>
-      </footer>
+            <NavMenu name={data.name} />
+          </div>
+        </header>
 
-      <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
-    </>
-  );
+        <section className="max-w-screen-2xl mx-auto mt-10 p-5">
+          <Outlet />
+        </section>
+
+        <footer className="py-5">
+          <p className="text-center">
+            All rights reserved {new Date().getFullYear()}
+          </p>
+        </footer>
+
+        <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
+      </>
+    );
 }
